@@ -1,11 +1,32 @@
 import React, { Component } from 'react';
 
-const googleMap = (props) => {
-  return (
-    <div className="map-container">
-    </div>
-    );
+class SimpleMap extends Component {
+  static defaultProps = {
+    center: {
+      lat: 59.95,
+      lng: 30.33
+    },
+    zoom: 10
 
+  };
+
+  render() {
+    return(
+      <div className="map-container">
+      <GoogleMapReact
+          bootstrapURLKeys={{ key: /* YOUR KEY HERE */ }}
+          defaultCenter={this.props.center}
+          defaultZoom={this.props.zoom}
+        >
+          <AnyReactComponent
+            lat={59.955413}
+            lng={30.337844}
+            text="My Marker"
+          />
+        </GoogleMapReact>
+      </div>
+      );
+  }
 }
 
-export default googleMap;
+export default SimpleMap;
